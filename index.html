@@ -5,13 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aslan Khadizov JS</title>
+    <title>CV - Start</title>
+    <!-- css -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
+    <main class="container hidden" id="container">
 
-    <!-- js code -->
-    <script src="js/js.excersize.js" rel="stylesheet"></script>
+        <!-- Div presentation before user logged in -->
+        <div class="presentation" id="presentation">
+            <p class="p-title">Uppgift: CV</p>
+            <p class="p-student">Student: Aslan Khadizov</p>
+            <input type="text" class="input input-name" value="" id="start_name" autocomplete="off" placeholder="Ditt namn här ..." autocomplete="off">
+            <input type="text" class="input input-lastname" value="" id="start_lastname" autocomplete="off" placeholder="Ditt efternamn här ..." autocomplete="off">
+            <button type="button" class="btn-start" id="start">Start</button>
+            <a href="cv.html" class="link" id="p_link">Visa Aslan Khadizov CV</a>
+        </div>
+
+        <!-- Header -->
+        <header id="header">
+            <div class="header-user-name">
+                <p id="user_name"></p>
+                <img class="cv-img" src="images/no-image.png" id="cv_img">
+            </div>
+            <ul class="btn-ul">
+                <li class="btn-li btn-li-checked" name="name_lastname" onclick="skiftSection(this)">Paersonuppgifter</li>
+                <li class="btn-li btn-visible" name="image-div" onclick="skiftSection(this)">
+                    <span class="span-pc">Laddda upp bild</span>
+                    <span class="span-mobile">📷</span>
+                </li>
+                <li class="btn-li btn-hide" name="address-div" onclick="skiftSection(this)">Adress</li>
+                <li class="btn-li btn-hide" name="phone-div" onclick="skiftSection(this)">Telefon</li>
+                <li class="btn-li btn-hide" name="email-div" onclick="skiftSection(this)">E-post</li>
+                <li class="btn-li btn-hide" name="aims-div" onclick="skiftSection(this)">Målsättning</li>
+                <!-- <li class="btn-li" name="study-div" onclick="skiftSection(this)">Utbildningar</li> -->
+                <li class="btn-li btn-hide" name="jobb-div" onclick="skiftSection(this)">Anställnigar</li>
+                <!-- <li class="btn-li" name="qualifications-div" onclick="skiftSection(this)">Övriga meriter</li> -->
+                <!-- <li class="btn-li" name="reference-div" onclick="skiftSection(this)">Referenser</li> -->
+                <li class="btn-li btn-hide" name="pb-div" onclick="skiftSection(this)">Presentation</li>
+                <li class="btn-li btn-visible" name="github-div" onclick="skiftSection(this)">
+                    <span class="span-pc">Github</span>
+                    <span class="span-mobile">🔗</span>
+                </li>
+                <li class="btn-li btn-overview">
+                    <a href="cv.html" alt="">
+                        <span class="span-pc">Översikt</span>
+                        <span class="span-mobile">&#10004;</span>
+                    </a>
+                </li>
+                <li class="btn-li btn-reset" onclick="reset()">x</li>
+            </ul>
+        </header>
+
+        <div class="wrapper" id="wrapper">
+            <form name="resumeForm" class="resume-form">
+                <div class="inputs-holder div-visible" id="name_lastname">
+                    <label>Namn</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" id="name" placeholder="Ditt namn här ..." autocomplete="off">
+                    <label>Efternamn</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" value="" id="lastname" placeholder="Ditt efternamn här ..." autocomplete="off">
+                </div>
+                <div class="inputs-holder" id="image-div">
+                    <!-- Upload image -->
+                    <div class="w100" id="img_upload">
+                        <label>Ladd upp bilden</label>
+                        <input class="input" type="file" id="image" onchange="onFileChange(this)">
+                    </div>
+                    <div class="w100 hidden" id="img_holder">
+                        <!-- Uploaded image -->
+                        <img class="uploaded-image" src="" alt="cv" id="uploaded" />
+                        <!-- Reset image -->
+                        <button type="button" class="btn reset-img" type="button" id="reset" onclick="resetImage()">x</button>
+                    </div>
+                </div>
+                <div class="inputs-holder div-visible" id="address-div">
+                    <label>Adress</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" id="address" placeholder="Din adress här ..." autocomplete="off">
+                    <label>Stad</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" value="" id="city" placeholder="Din stad här ..." autocomplete="off">
+                    <label>Postnummer</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" value="" id="postcode" placeholder="Ditt postnummer här ..." autocomplete="off">
+                </div>
+                <div class="inputs-holder div-visible" id="phone-div">
+                    <label>Mobilnummer</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" id="phone" placeholder="Ditt mobilnummer här ..." autocomplete="off">
+                </div>
+                <div class="inputs-holder div-visible" id="email-div">
+                    <label>E-postadress</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" id="email" placeholder="Din e-postadress här ..." autocomplete="off">
+                </div>
+                <div class="inputs-holder div-visible" id="aims-div">
+                    <label>Målsättning</label>
+                    <textarea class="textarea" onkeyup="setValue(this)" id="aims_text" maxlength="500" placeholder="Beskriv målsättning här ..."></textarea>
+                </div>
+                <!-- <div class="inputs-holder" id="study-div"></div> -->
+                <div class="inputs-holder div-visible" id="jobb-div">
+                    <div class="w100" id="jobb-wrapper">
+                        <label>Arbetsgivare</label>
+                        <input type="text" class="input" onkeyup="setValue(this)" id="jobb" placeholder="Din arbetsgivare namn här ..." autocomplete="off">
+                        <label>Beskrivning</label>
+                        <textarea class="textarea" onkeyup="setValue(this)" id="jobb_text" maxlength="500" placeholder="Beskriv här ..."></textarea>
+                    </div>
+
+                    <p id="more_jobb" onclick="setMoreJobb()">Lägg till mer anställning</p>
+                </div>
+                <!-- <div class="inputs-holder" id="qualifications-div"></div>
+                <div class="inputs-holder" id="reference-div"></div> -->
+                <div class="inputs-holder div-visible" id="pb-div">
+                    <label>Presentation</label>
+                    <textarea class="textarea" onkeyup="setValue(this)" id="pb_text" maxlength="500" placeholder="Kort beskrivning om sig själv här ..."></textarea>
+                </div>
+                <div class="inputs-holder" id="github-div">
+                    <label>Github länk</label>
+                    <input type="text" class="input" onkeyup="setValue(this)" id="github" placeholder="Din github repo länk ..." autocomplete="off">
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- js -->
+    <script src="js/script.js" type="text/javascript"></script>
 </body>
 
 </html>
