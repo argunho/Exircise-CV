@@ -2,29 +2,18 @@ var loc = localStorage;
 const cv_block = document.getElementById("cv");
 const content = "<div class='content-div'><p class='heading'>(heading)</p><p class='description'>(description)</p></div>";
 
-var cv = [
-    "Aslan", "Khadizov", "images/profile.png", "Sommarvägen 11 E", "Växjö",
-    "35237", "0704960343", "aslan_argun@hotmail.com",
-    "Mitt drömjobb är ett sånt jobb vilket kommer att glädja mig varje dag. Jag har ett stort intresse" +
-    "inom programering och mitt mål är att hitta mitt drömjobb såsom systemutvecklare eller webprogramerar",
-    "Systematiq AB", "Systemutvecklare, webprogramerare",
-    "Jag är bra på att ta in ny information, lära mig nya saker, har förmåga att förstå andra" +
-    "människor. Jag är ansvarig, ordningsam, gillar ordning och hygien samt dricker inte alkohol, röker inte och drogfri.", "https://github.com/argunho/assignments/"
-]
-console.log(cv)
-console.log(loc.length)
-document.getElementById("user_name").innerHTML = (loc.length > 0) ? (loc.getItem("name") + " " + loc.getItem("lastname")) : (cv[0] + " " + cv[1]);
-var img = (loc.length > 0) ? loc.getItem("src") : cv[2];
-var address = (loc.length > 0) ? loc.getItem("adress") : cv[3];
-var city = (loc.length > 0) ? loc.getItem("city") : cv[4];
-var postcode = (loc.length > 0) ? loc.getItem("postcode") : cv[5];
-var phone = (loc.length > 0) ? loc.getItem("phone") : cv[6];
-var email = (loc.length > 0) ? loc.getItem("email") : cv[7];
-var aims = (loc.length > 0) ? loc.getItem("aims_text") : cv[8];
-var jobb = (loc.length > 0) ? loc.getItem("jobb") : cv[9];
-var jobb_desc = (loc.length > 0) ? loc.getItem("jobb_text") : cv[10];
-var pb = (loc.length > 0) ? loc.getItem("pb_text") : cv[11];
-var github = (loc.length > 0) ? loc.getItem("github") : cv[12];
+document.getElementById("user_name").innerHTML = (loc.length > 0) ? (loc.getItem("name") + " " + loc.getItem("lastname")) : "";
+var img = (loc.length > 0) ? loc.getItem("src");
+var address = (loc.length > 0) ? loc.getItem("adress");
+var city = (loc.length > 0) ? loc.getItem("city");
+var postcode = (loc.length > 0) ? loc.getItem("postcode");
+var phone = (loc.length > 0) ? loc.getItem("phone");
+var email = (loc.length > 0) ? loc.getItem("email");
+var aims = (loc.length > 0) ? loc.getItem("aims_text");
+var jobb = (loc.length > 0) ? loc.getItem("jobb");
+var jobb_desc = (loc.length > 0) ? loc.getItem("jobb_text");
+var pb = (loc.length > 0) ? loc.getItem("pb_text");
+var github = (loc.length > 0) ? loc.getItem("github");
 
 if (img == null)
     img = "images/profile.png";
