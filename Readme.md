@@ -1,4 +1,4 @@
-# Uppgift: CV (js, css, html)
+# Studieuppgift: CV (js, css, html)
 
 [Demo](https://argunho.github.io/Exircise-CV/)
 
